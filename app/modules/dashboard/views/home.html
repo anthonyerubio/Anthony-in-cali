@@ -1,0 +1,46 @@
+﻿<section class="content-header">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Live Claims Feed</a>
+            </div>
+        </div>
+    </nav>
+    <div class="filters well">
+        <div class="d-flex align-item-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default cusdefault-btn">Select All Offices</button>
+                <button type="button" class="btn btn-default cusdefault-btn">Select None</button>
+            </div>
+            <div ng-dropdown-multiselect="" extra-settings="dropdownSetting" options="Categories" class="m-l-10"
+                selected-model="CategoriesSelected" checkboxes="true"></div>
+        </div>
+        <div class="d-flex align-item-center m-t-10">
+            <div ng-dropdown-multiselect="" extra-settings="dropdownSetting" options="Categories"
+                selected-model="CategoriesSelected" checkboxes="true"></div>
+            <div ng-dropdown-multiselect="" extra-settings="dropdownSetting" options="Categories" class="m-l-10"
+                selected-model="CategoriesSelected" checkboxes="true"></div>
+            <div ng-dropdown-multiselect="" extra-settings="dropdownSetting" options="Categories" class="m-l-10"
+                selected-model="CategoriesSelected" checkboxes="true"></div>
+            <button type="button" class="btn cusbtn-primary m-l-10">Calculate Counts</button>    
+            <a href="#" class="m-l-10">
+                <i class="fa fa-info-circle"></i> What's this?
+            </a>
+            <label for="crossing_filing_limit" class="m-l-15">TFL Warning</label>
+            <input type="checkbox" id="crossing_filing_limit" class="cus-checkbox m-l-10">
+        </div>
+
+        <div class="d-flex align-item-center m-t-10">
+            <div class="form-group">
+                <input name="states" id="states" type="text" placeholder="Patient" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control">
+            </div>
+            <div class="form-group m-l-10">
+                <input name="states" id="states2" type="text" placeholder="Player Name" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control">
+            </div>
+            <div class="form-group m-l-10">
+                <input type="text" placeholder="drc claim #" class="form-control">
+            </div>
+        </div>
+
+    </div>
+</section>
