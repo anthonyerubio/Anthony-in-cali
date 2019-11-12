@@ -1,0 +1,145 @@
+<div class="infinite-cards row">
+  <div class="col-md-12">
+    <nb-card class="own-scroll">
+      <nb-card-header>Live Claims Feed</nb-card-header>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-md-12 first-box">
+            <button class="btn btn-outline-dark btn-all">Select All Offices</button>
+            <button class="btn btn-outline-dark btn-none">Select None</button>
+            <nb-select multiple placeholder="Primary Offices" class="sel-box" aria-label="Price Offices">
+              <nb-option value="1">Exam 1</nb-option>
+              <nb-option value="2">Exam 2</nb-option>
+              <nb-option value="3">Exam 3</nb-option>
+              <nb-option value="4">Exam 4</nb-option>
+              <nb-option value="4">Inactive Exam</nb-option>
+            </nb-select>
+          </div>
+            
+          <div class="col-md-12 second-box">
+            <nb-select multiple placeholder="Primary Offices" class="second-selbox">
+              <nb-option value="1">Exam 1</nb-option>
+              <nb-option value="2">Exam 2</nb-option>
+              <nb-option value="3">Exam 3</nb-option>
+              <nb-option value="4">Exam 4</nb-option>
+              <nb-option value="4">Inactive Exam</nb-option>
+            </nb-select>
+            <nb-select multiple placeholder="Primary Offices" class="second-selbox">
+              <nb-option value="1">Exam 1</nb-option>
+              <nb-option value="2">Exam 2</nb-option>
+              <nb-option value="3">Exam 3</nb-option>
+              <nb-option value="4">Exam 4</nb-option>
+              <nb-option value="4">Inactive Exam</nb-option>
+            </nb-select>
+            <nb-select multiple placeholder="Primary Offices" class="second-selbox">
+              <nb-option value="1">Exam 1</nb-option>
+              <nb-option value="2">Exam 2</nb-option>
+              <nb-option value="3">Exam 3</nb-option>
+              <nb-option value="4">Exam 4</nb-option>
+              <nb-option value="4">Inactive Exam</nb-option>
+            </nb-select>
+            <button type="button" class="btn btn-primary second-box">
+              Calculate Counts
+            </button>
+            <a href="#"><nb-icon icon="info"></nb-icon>What's this?</a>
+            <nb-checkbox (checkedChange)="toggle($event)">TFL Warning</nb-checkbox>
+          </div>
+
+          <div class="col-md-12 third-box">
+            <div class="row">
+              <div class="col-md-1">
+                <input type="text" nbInput placeholder="Patient" class="form-control form-control-sm" style="vertical-align:middle;">
+              </div>
+              <div class="col-md-1">
+                <input type="text" nbInput placeholder="Payer" class="form-control form-control-sm">
+              </div>
+              <div class="col-md-1">
+                <input type="text" nbInput placeholder="Player" class="form-control form-control-sm">
+              </div>
+              <div class="col-md-1">
+                <input type="text" nbInput placeholder="claim#" class="form-control form-control-sm">
+              </div>
+              <div class="col-md-4">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <input type="date" nbInput class="form-control form-control-sm" placeholder="01/01/2019">
+                  </div>
+                  <div class="col-md-2" style="text-align: center; line-height: 2;">
+                      —
+                  </div>
+                  <div class="col-sm-5">
+                    <input type="date" nbInput class="form-control form-control-sm">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label style="margin-right: 10px;">Clinical Note </label>
+                <nb-select multiple placeholder="Primary Offices" class="second-selbox">
+                  <nb-option value="1">Exam 1</nb-option>
+                  <nb-option value="2">Exam 2</nb-option>
+                  <nb-option value="3">Exam 3</nb-option>
+                  <nb-option value="4">Exam 4</nb-option>
+                  <nb-option value="4">Inactive Exam</nb-option>
+                </nb-select>
+              </div>
+            </div>
+          </div>
+
+          <hr style="width: -webkit-fill-available;">
+          
+          <div class="col-md-12 last-box">
+            <div class="row">
+              <div class="col-md-6">
+                <nb-checkbox (checkedChange)="toggle($event)">Open window in new tab</nb-checkbox>
+              </div>
+              <div class="col-md-6">
+                <button class="btn btn-outline-dark btn-all btn-sm">Select All Offices</button>
+                <button class="btn btn-outline-dark btn-none btn-sm">Select None</button>
+                <button class="btn btn-primary btn-center btn-sm">Calculate Counts</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-md-12" style="margin-bottom: 20px;">
+    <div class="row">
+      <div class="col-md-8">
+        <nb-select placeholder="Batch Status Change" [(selected)]="selectedItem" style="margin-right: 10px;">
+          <nb-select-label>
+              Batch Status Change
+          </nb-select-label>
+    
+          <nb-option [value]="0"> </nb-option>
+          <nb-option [value]="1">Paid In Full</nb-option>
+          <nb-option [value]="2">Balance Due</nb-option>
+          <nb-option [value]="3">Settled</nb-option>
+          <nb-option [value]="4">Internal Review</nb-option>
+        </nb-select>
+        <button class="btn btn-outline-dark tool-box btn-export"><nb-icon icon="printer"></nb-icon>Export to File</button>
+        <button class="btn btn-outline-dark tool-box btn-down"><nb-icon icon="arrow-down"></nb-icon></button>
+        <button class="btn btn-outline-dark tool-box btn-custom"><nb-icon icon="save"></nb-icon>Custome Export</button>
+        <nb-select multiple placeholder="Multiple Select" filled status="success" style="min-width: 150px; margin-right: 10px;">
+          <nb-option value="1">Option 1</nb-option>
+          <nb-option value="2">Option 2</nb-option>
+          <nb-option value="3">Option 3</nb-option>
+          <nb-option value="4">Option 4</nb-option>
+        </nb-select>
+        <button class="btn btn-success tool-box btn-schedule"><nb-icon icon="plus-square"></nb-icon>Schedule</button>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+
+  <div class="col-md-12 table-box">
+    <nb-card>
+      <nb-card-body>
+        <ng2-smart-table [settings]="settings" [source]="source" style="display: flex;"></ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  
+</div>
+  

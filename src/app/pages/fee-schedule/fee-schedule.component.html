@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-tabset (changeTab)="selectTab($event)">
+        <nb-tab tabTitle="Insurance Payer Fee Schedule" disabled class="title-label">
+        </nb-tab>
+        <nb-tab tabTitle="CPT & HCPCS" active>
+          <div class="row">
+            <div class="col-md-3">
+              <input type="text" nbInput placeholder="CPT/HCPCS/Custom Procedure" class="form-control form-control-lg">
+            </div>
+            <div class="col-md-1">
+              <input type="text" nbInput placeholder="Payer ID" class="form-control form-control-lg">
+            </div>
+            <div class="col-md-2">
+              <input type="text" nbInput placeholder="Plan name" class="form-control form-control-lg">
+            </div>
+            <div class="col-md-3">
+              <input type="text" nbInput placeholder="Picklist Category" class="form-control form-control-lg">
+            </div>
+            <div class="col-md-2">
+              <button type="button" class="btn btn-primary"><nb-icon icon="sync" style="margin-right: 5px;"></nb-icon>Update</button>
+            </div>
+          </div>
+        </nb-tab>
+        <nb-tab tabTitle="ICD-9">
+          <div class="row">
+            <div class="col-md-2">
+              <input type="text" nbInput placeholder="ICD-9 Procedure" class="form-control form-control-lg">
+            </div>
+            <div class="col-md-2">
+              <input type="text" nbInput placeholder="Picklist Category" class="form-control form-control-lg">
+            </div>
+            <div class="col-md-2">
+              <button type="button" class="btn btn-primary"><nb-icon icon="sync" style="margin-right: 5px;"></nb-icon>Update</button>
+            </div>
+          </div>
+        </nb-tab>
+        <nb-tab tabTitle="ICD-10">
+          <div class="row">
+            <div class="col-md-2">
+              <input type="text" nbInput placeholder="ICD-10 Procedure" class="form-control form-control-lg">
+            </div>
+            <div class="col-md-2">
+              <input type="text" nbInput placeholder="Picklist Category" class="form-control form-control-lg">
+            </div>
+            <div class="col-md-2">
+              <button type="button" class="btn btn-primary"><nb-icon icon="sync" style="margin-right: 5px;"></nb-icon>Update</button>
+            </div>
+          </div>
+        </nb-tab>
+      </nb-tabset>
+    </nb-card>
+  </div>
+  <div class="col-md-12" style="margin-bottom: 20px;">
+    <button class="btn btn-outline-dark" style="margin-right: 10px;"><nb-icon icon="printer"></nb-icon>Export to File</button>
+    <button class="btn btn-success"><nb-icon icon="plus"></nb-icon>Add New</button>
+  </div>
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-body>
+        <ng2-smart-table [settings]="settings" [source]="source" style="display: flex;"></ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

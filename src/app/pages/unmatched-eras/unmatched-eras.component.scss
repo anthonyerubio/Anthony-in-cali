@@ -1,0 +1,19 @@
+@import '../../@theme/styles/themes';
+
+@include nb-install-component() {
+  ::ng-deep nb-card-body nb-select.sel-box {
+    min-width: 150px;
+    margin-left: 20px;
+  }
+
+  .list-card {
+    nb-card-header {
+      border-bottom: none;
+      box-shadow: 0 0 1px 0 rgba($color: #575454, $alpha: 0.5);
+      border-radius: 0px;
+    }
+    nb-card-body {
+      padding: 0;
+    }
+  }
+}

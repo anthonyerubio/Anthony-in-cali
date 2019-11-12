@@ -1,0 +1,76 @@
+<div class="infinite-cards row">
+    <div class="col-md-12">
+      <nb-card class="own-scroll">
+        <nb-card-header>Unmatched ERAs</nb-card-header>
+        <nb-card-body>
+          <div class="row">  
+            <div class="col-md-12 third-box">
+              <div class="row">
+                <div class="col-md-10">
+                  <div class="row">
+                    <div class="col-md-1">
+                      <input type="input" nbInput placeholder="Trace #" class="form-control form-control-lg" style="vertical-align: middle;">
+                    </div>
+                    <div class="col-md-1" style="margin-right: 30px;">
+                      <nb-select [(selected)]="selectedStatus">
+                        <nb-option value="1">Received</nb-option>
+                        <nb-option value="2">Check Date</nb-option>
+                        <nb-option value="3">DoS</nb-option>
+                      </nb-select>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <div class="col-sm-5">
+                          <input type="input" nbInput class="form-control form-control-lg" placeholder="01/01/2019">
+                        </div>
+                        <div class="col-md-2" style="text-align: center; line-height: 2;">
+                            —
+                        </div>
+                        <div class="col-sm-5">
+                          <input type="input" nbInput class="form-control form-control-lg">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <input type="text" nbInput placeholder="Player" class="form-control form-control-lg">
+                    </div>
+                    <div class="col-md-1">
+                      <input type="text" nbInput placeholder="claim#" class="form-control form-control-lg">
+                    </div>
+                    <div class="col-md-2">
+                      <nb-select [(selected)]="selectedItem">
+                        <nb-option value="1">—Status—</nb-option>
+                        <nb-option value="2">New</nb-option>
+                        <nb-option value="3">In progress</nb-option>
+                        <nb-option value="4">Compare</nb-option>
+                      </nb-select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <button class="btn btn-outline-dark" style="margin-right: 5px;">Reset</button>
+                  <button class="btn btn-primary"><nb-icon icon="sync"></nb-icon>Update</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  
+    <div class="col-md-12" style="margin-bottom: 20px;">
+      <button class="btn btn-outline-dark tool-box btn-export"><nb-icon icon="printer"></nb-icon>Export to File</button>
+    </div>
+  
+    <div class="col-md-12">
+      <nb-card>
+        <nb-card-body>
+          <div class="smart-table-container">
+          <ng2-smart-table [settings]="settings" [source]="source" style="display: flex;"></ng2-smart-table>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+    
+  </div>
+    
