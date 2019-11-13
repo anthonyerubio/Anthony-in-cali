@@ -16,7 +16,7 @@ export class DaySheetComponent implements OnInit {
   selectedItem4 = '1';
   selectedItem5 = '1';
   selectedItem6 = '1';
-  
+
   settings = {
     actions: {
       add: false,
@@ -108,12 +108,12 @@ export class DaySheetComponent implements OnInit {
           office: {
             title: 'Office',
             type: 'string',
-            width: '10%',
+            width: '5%',
           },
           payer: {
             title: 'Payer',
             type: 'string',
-            width: '10%',
+            width: '5%',
           },
           check: {
             title: 'Check #',
@@ -133,7 +133,7 @@ export class DaySheetComponent implements OnInit {
           reason: {
             title: 'Adjustment Reason',
             type: 'string',
-            width: '10%',
+            width: '20%',
           },
         },
       }
@@ -165,12 +165,12 @@ export class DaySheetComponent implements OnInit {
           provider: {
             title: 'Provider',
             type: 'string',
-            width: '10%',
+            width: '5%',
           },
           office: {
             title: 'Office',
             type: 'string',
-            width: '10%',
+            width: '5%',
           },
           method: {
             title: 'Method',
@@ -190,7 +190,7 @@ export class DaySheetComponent implements OnInit {
           payment: {
             title: 'Patient Payment',
             type: 'string',
-            width: '10%',
+            width: '15%',
           },
           note: {
             title: 'Note',

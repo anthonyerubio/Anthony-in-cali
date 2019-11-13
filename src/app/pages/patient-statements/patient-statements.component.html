@@ -1,3 +1,249 @@
-<p>
-  patient-statements works!
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-tabset (changeTab)="selectTab($event)">
+        <nb-tab tabTitle="Patient Statements" disabled class="title-label">
+        </nb-tab>
+        <nb-tab tabTitle="Active Patients" active>
+          <div class="row">
+            <div class="col-md-12" style="margin-bottom: 5px;">
+              <div class="row">
+                <div class="col-sm-1" style="padding-right: 0px;">
+                  <input type="input" nbInput class="form-control form-control-sm" placeholder="Patient" style="width: 100%;">
+                </div>
+                <div class="col-sm-2" style="padding-right: 0px;">
+                  <input type="input" nbInput class="form-control form-control-sm" placeholder="Patient Group" style="width: 100%;">
+                </div>
+                <div class="col-md-3" style="padding-right: 0px;">
+                  <div class="row">
+                    <div class="col-sm-2" style="padding-right: 0px;">
+                      <button class="btn btn-outline-dark btn-sm">All</button>
+                    </div>
+                    <div class="col-sm-10" style="padding-left: 0px;">
+                      <input type="input" nbInput class="form-control form-control-sm" placeholder="Patient Flags" style="width: 100%;">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-1" style="padding-right: 0px;">
+                  <nb-select size="small">
+                    <nb-option value="1">Include</nb-option>
+                    <nb-option value="2">Exclude</nb-option>
+                  </nb-select>
+                </div>
+                <div class="col-md-1" style="padding-right: 0px; line-height: 2rem; font-size: 15px; padding-left: 0px;">
+                  <label>Selected Flags</label>
+                </div>
+                <div class="col-md-1" style="padding-left: 0px;">
+                  <input type="input" nbInput class="form-control form-control-sm" placeholder="Statement ID" style="width: 100%;">
+                </div>
+                <div class="col-md-1 offset-md-1" style="padding-right: 0px;">
+                  <button class="btn btn-success btn-sm">Calculate All</button>                  
+                </div>
+                <div class="col-md-1" style="padding-left: 0px; padding-right: 0px;">
+                  <button class="btn btn-primary btn-sm"><nb-icon icon="sync"></nb-icon>Search</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="row">
+                    <strong style="line-height: 2rem;">Since last statement was printed</strong>                    
+                    <div class="col-sm-4">
+                      <nb-select size="small" [(selected)]="selectedItem1">
+                        <nb-option value="1">All</nb-option>
+                        <nb-option value="2">30+ Days</nb-option>
+                        <nb-option value="2">60+ Days</nb-option>
+                        <nb-option value="2">90+ Days</nb-option>
+                      </nb-select>
+                    </div>
+                  </div>
+                </div>
+                <nb-checkbox (checkedChange)="toggle($event)" style="line-height: 2rem;">Include pt with zero bal or bal between</nb-checkbox>
+                <div class="col-sm-3">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <input type="input" nbInput class="form-control form-control-sm" placeholder="from" style="width: 100%;">
+                    </div>
+                    <strong style="line-height: 2rem;">
+                      and
+                    </strong>
+                    <div class="col-md-5">
+                      <input type="input" nbInput class="form-control form-control-sm" placeholder="to" style="width: 100%;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr style="width: 100%;">
+            <div class="col-md-12">
+              <div class="row">
+                <strong style="line-height: 1.8rem; font-size: 14px; margin: 0 auto;">Statement due date</strong>
+                <div class="col-md-1" style="margin: 0 auto;">
+                  <div class="row">
+                    <div class="col-sm-9" style="padding-right: 0px; border-top-left-radius: 0px;">
+                      <input type="input" class="form-control form-control-sm" placeholder="Due Date" style="border: 0.5px solid #808080; border-top-right-radius: 0px; border-bottom-right-radius: 0px;">
+                    </div>
+                    <div class="col-sm-3" style="padding-left: 0px;">
+                      <button class="btn btn-sm" style="border: 0.5px solid #808080; border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-left: 0px;"><nb-icon icon="close"></nb-icon></button> 
+                    </div>
+                  </div>
+                </div>
+                <strong style="line-height: 1.8rem; margin-left: 20px; margin-right: 10px; font-size: 14px;">Include note in statement</strong>
+                <div class="col-md-3" style="padding-right: 0px; margin: 0 auto;">
+                  <div class="row">
+                    <div class="col-sm-1" style="padding-left: 0px; padding-right: 0px;  margin: 0 auto;">
+                      <button class="btn btn-sm" style="border: 0.5px solid #808080;"><nb-icon icon="edit"></nb-icon></button>
+                    </div>
+                    <div class="col-sm-11" style="padding: 0px;  margin: 0 auto;">
+                      <nb-checkbox (checkedChange)="toggle($event)" style="margin-left: 15px; margin-top: auto; margin-bottom: auto;">Include a summary with balance for each provider</nb-checkbox>                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" style="margin-left: 10px;  margin: 0 auto;">
+                  <div class="row">
+                    <div class="col-sm-12" style="float: right; display: block; font-family: helvetica, arial, sans-serif; line-height: 20px; font-size: 0.75rem; letter-spacing: 0px;  margin: 0 auto;">
+                      <strong>Print PDF</strong> will show only claims with a patient balance but no insurance balance.<br>                  
+                      <strong>Print Transaction</strong> will show all appointments whether the claim has a balance or not.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-1" style="margin: 0 auto;">
+                  <button nbButton [nbContextMenu]="items" size="small" status="success">Action<nb-icon icon="arrow-down"></nb-icon></button>
+                </div>                
+              </div>
+            </div>
+          </div>
+        </nb-tab>
+        <nb-tab tabTitle="All Patients">
+          <div class="row">
+            <div class="col-md-12" style="margin-bottom: 5px;">
+              <div class="row">
+                <div class="col-sm-1" style="padding-right: 0px;">
+                  <input type="input" nbInput class="form-control form-control-sm" placeholder="Patient" style="width: 100%;">
+                </div>
+                <div class="col-sm-2" style="padding-right: 0px;">
+                  <input type="input" nbInput class="form-control form-control-sm" placeholder="Patient Group" style="width: 100%;">
+                </div>
+                <div class="col-md-3" style="padding-right: 0px;">
+                  <div class="row">
+                    <div class="col-sm-2" style="padding-right: 0px;">
+                      <button class="btn btn-outline-dark btn-sm">All</button>
+                    </div>
+                    <div class="col-sm-10" style="padding-left: 0px;">
+                      <input type="input" nbInput class="form-control form-control-sm" placeholder="Patient Flags" style="width: 100%;">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-1" style="padding-right: 0px;">
+                  <nb-select size="small">
+                    <nb-option value="1">Include</nb-option>
+                    <nb-option value="2">Exclude</nb-option>
+                  </nb-select>
+                </div>
+                <div class="col-md-1" style="padding-right: 0px; line-height: 2rem; font-size: 15px; padding-left: 0px;">
+                  <label>Selected Flags</label>
+                </div>
+                <div class="col-md-1" style="padding-left: 0px;">
+                  <input type="input" nbInput class="form-control form-control-sm" placeholder="Statement ID" style="width: 100%;">
+                </div>
+                <div class="col-md-1 offset-md-1" style="padding-right: 0px;">
+                  <button class="btn btn-success btn-sm">Calculate All</button>                  
+                </div>
+                <div class="col-md-1" style="padding-left: 0px; padding-right: 0px;">
+                  <button class="btn btn-primary btn-sm"><nb-icon icon="sync"></nb-icon>Search</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="row">
+                    <strong style="line-height: 2rem;">Since last statement was printed</strong>                    
+                    <div class="col-sm-4">
+                      <nb-select size="small" [(selected)]="selectedItem1">
+                        <nb-option value="1">All</nb-option>
+                        <nb-option value="2">30+ Days</nb-option>
+                        <nb-option value="2">60+ Days</nb-option>
+                        <nb-option value="2">90+ Days</nb-option>
+                      </nb-select>
+                    </div>
+                  </div>
+                </div>
+                <nb-checkbox (checkedChange)="toggle($event)" style="line-height: 2rem;">Include pt with zero bal or bal between</nb-checkbox>
+                <div class="col-sm-3">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <input type="input" nbInput class="form-control form-control-sm" placeholder="from" style="width: 100%;">
+                    </div>
+                    <strong style="line-height: 2rem;">
+                      and
+                    </strong>
+                    <div class="col-md-5">
+                      <input type="input" nbInput class="form-control form-control-sm" placeholder="to" style="width: 100%;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr style="width: 100%;">
+            <div class="col-md-12">
+              <div class="row">
+                <strong style="line-height: 1.8rem; font-size: 14px; margin: 0 auto;">Statement due date</strong>
+                <div class="col-md-1" style="margin: 0 auto;">
+                  <div class="row">
+                    <div class="col-sm-9" style="padding-right: 0px; border-top-left-radius: 0px;">
+                      <input type="input" class="form-control form-control-sm" placeholder="Due Date" style="border: 0.5px solid #808080; border-top-right-radius: 0px; border-bottom-right-radius: 0px;">
+                    </div>
+                    <div class="col-sm-3" style="padding-left: 0px;">
+                      <button class="btn btn-sm" style="border: 0.5px solid #808080; border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-left: 0px;"><nb-icon icon="close"></nb-icon></button> 
+                    </div>
+                  </div>
+                </div>
+                <strong style="line-height: 1.8rem; margin-left: 20px; margin-right: 10px; font-size: 14px;">Include note in statement</strong>
+                <div class="col-md-3" style="padding-right: 0px; margin: 0 auto;">
+                  <div class="row">
+                    <div class="col-sm-1" style="padding-left: 0px; padding-right: 0px;  margin: 0 auto;">
+                      <button class="btn btn-sm" style="border: 0.5px solid #808080;"><nb-icon icon="edit"></nb-icon></button>
+                    </div>
+                    <div class="col-sm-11" style="padding: 0px;  margin: 0 auto;">
+                      <nb-checkbox (checkedChange)="toggle($event)" style="margin-left: 15px; margin-top: auto; margin-bottom: auto;">Include a summary with balance for each provider</nb-checkbox>                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4" style="margin-left: 10px;  margin: 0 auto;">
+                  <div class="row">
+                    <div class="col-sm-12" style="float: right; display: block; font-family: helvetica, arial, sans-serif; line-height: 20px; font-size: 0.75rem; letter-spacing: 0px;  margin: 0 auto;">
+                      <strong>Print PDF</strong> will show only claims with a patient balance but no insurance balance.<br>                  
+                      <strong>Print Transaction</strong> will show all appointments whether the claim has a balance or not.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-1" style="margin: 0 auto;">
+                  <button nbButton [nbContextMenu]="items" size="small">Action<nb-icon icon="arrow-down"></nb-icon></button>
+                </div>                
+              </div>
+            </div>
+          </div>
+        </nb-tab>
+      </nb-tabset>
+    </nb-card>
+  </div>
+  <div class="col-md-12" style="margin-bottom: 10px;">
+    <div class="row">
+      <div class="col-md-2">
+        <strong>Patient Selected</strong>
+      </div>
+      <div class="col-md-2 offset-md-8">
+        <input type="text" disabled value="1 - 7 OF 7" style="text-align: center;">
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-body>
+        <ng2-smart-table [settings]="settings" [source]="source" style="display: flex;"></ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

@@ -9,9 +9,15 @@ nb-tabset {
     padding: 1rem 2rem;
 }
 
-:host ::ng-deep nb-card nb-card-body ng2-smart-table thead tr th{
+:host ::ng-deep nb-tabset nb-tab ng2-smart-table thead tr th{
     font-size: .8em;
     background-color: lightyellow;
+    margin: 0;
+    padding: 0em 0em;
+}
+:host ::ng-deep nb-tabset nb-tab ng2-smart-table tbody tr td{
+    font-size: .8em;
+    background-color: rgb(255, 255, 255);
 }
 
 :host ::ng-deep nb-card nb-tabset ul li.tab.disabled a span {
@@ -19,20 +25,4 @@ nb-tabset {
     // font-weight: bold;
     color: #777;
     font-family: Helvetica, Arial, sans-serif;
-}
-:host {
-    display: block;
-    max-height: 25rem;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.card-row {
-    display: flex;
-    margin: 0 -0.5rem;
-}
-
-.card-col {
-    flex: 1 0 calc(50% - 1rem);
-    margin: 0 0.5rem;
 }

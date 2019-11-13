@@ -155,7 +155,7 @@
   </div>
   <div class="col-md-12">
     <nb-tabset (changeTab)="selectTab($event)">
-      <nb-tab tabTitle="Grand Totals" id="1">
+      <nb-tab tabTitle="Grand Totals">
         <div class="row">
           <div class="col-md-3">
             <nb-card>
@@ -192,9 +192,6 @@
       <nb-tab tabTitle="Charges">
         <ng2-smart-table [settings]="settings" [source]="source" style="display: flex;"></ng2-smart-table>  
       </nb-tab>
-      <!-- <div>
-        <button type="button" class="btn btn-primary btn-sm"><nb-icon icon="sync" style="margin-right: 5px;"></nb-icon>Update</button>
-      </div> -->
     </nb-tabset>
   </div>
 </div>

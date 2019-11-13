@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
-import { NbTabsetModule, NbMenuModule, NbCardModule, NbSelectModule, NbButtonModule, NbIconModule, NbInputModule, NbCheckboxModule, NbTreeGridModule } from '@nebular/theme';
+import { NbContextMenuModule, NbTabsetModule, NbMenuModule, NbCardModule, NbSelectModule, NbButtonModule, NbIconModule, NbInputModule, NbCheckboxModule, NbTreeGridModule } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ChartModule } from 'angular2-chartjs';
 
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
@@ -32,6 +35,10 @@ import { LiveclaimsComponent } from './liveclaims/liveclaims.component';
     NbTreeGridModule,
     Ng2SmartTableModule,
     NbTabsetModule,
+    NbContextMenuModule,
+    NgxEchartsModule,
+    NgxChartsModule,
+    ChartModule,
   ],
   declarations: [
     PagesComponent,

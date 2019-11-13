@@ -5,6 +5,16 @@
     min-width: 150px;
     margin-left: 20px;
   }
+  ::ng-deep nb-card nb-card-body ng2-smart-table thead tr th{
+    font-size: .8em;
+    background-color: lightyellow;
+    margin: 0;
+    padding: 0.2em 0.4em;
+  }
+  ::ng-deep nb-card nb-card-body ng2-smart-table tbody tr td{
+      font-size: .8em;
+      background-color: rgb(255, 255, 255);
+  }
 
   .list-card {
     nb-card-header {
