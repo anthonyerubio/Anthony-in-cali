@@ -19,7 +19,12 @@ nb-tabset {
     // font-weight: bold;
     color: #777;
     font-family: Helvetica, Arial, sans-serif;
+    text-transform: capitalize;
 }
 :host ::ng-deep button#action-btn {
     background-color: #28a745;
+}
+:host ::ng-deep nb-card nb-tabset ul li.tab a span {
+    text-transform: capitalize;
+    font-family: Helvetica, Arial, sans-serif;
 }

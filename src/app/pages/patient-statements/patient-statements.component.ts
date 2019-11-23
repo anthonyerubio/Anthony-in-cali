@@ -1,15 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
-
+import { Component, OnInit, TemplateRef, Input, Output, EventEmitter } from '@angular/core';
+import { LocalDataSource, ViewCell } from 'ng2-smart-table';
+import { NbDialogService } from '@nebular/theme';
 import { SmartTableData } from '../../@core/data/smart-table';
+import { WikipediaService } from '../liveclaims/wiki.service';
 
+////////////
+@Component({
+  selector: 'button-view',
+  template: `
+    <button (click)="onClick()">{{ renderValue }}</button>
+  `,
+})
+export class ButtonViewComponent implements ViewCell, OnInit {
+  renderValue: string;
+
+  @Input() value: string | number;
+  @Input() rowData: any;
+
+  @Output() save: EventEmitter<any> = new EventEmitter();
+
+  ngOnInit() {
+    this.renderValue = 'preview';
+  }
+
+  onClick() {
+    alert('Hello!');
+  }
+}
+///////
 @Component({
   selector: 'ngx-patient-statements',
   templateUrl: './patient-statements.component.html',
   styleUrls: ['./patient-statements.component.scss']
 })
 export class PatientStatementsComponent implements OnInit {
-
+  rowcnt;
+  selectedItem;
+  dueDate;
+  selectedRows;
+  selcetedRowscnt = '0';
+  wikiItems: any[] = [];
+  wikiItems1: any[] = [];
+  config: any = {'class': 'autoinput', 'max': 2, 'placeholder': 'Patient'};
+  config1: any = {'class': 'autoinputone', 'max': 2, 'placeholder': 'Patient Group'};
   selectedItem1 = '1';
   items = [
     { title: 'Print PDF' },
@@ -23,7 +56,7 @@ export class PatientStatementsComponent implements OnInit {
       add: false,
       edit: false,
       delete: false,
-      select:true,
+      select:false,
     },
     hideSubHeader: true,
     columns: {
@@ -44,9 +77,9 @@ export class PatientStatementsComponent implements OnInit {
         width: '8%',
       },
       upcoming: {
-        title: 'Upsomming Appt',
+        title: 'Upcomming Appt',
         type: 'string',
-        width: '8%',
+        width: '100px',
       },
       totalstmts: {
         title: 'Total Stmts',
@@ -83,10 +116,15 @@ export class PatientStatementsComponent implements OnInit {
         type: 'string',
         width: '8%',
       },
-      note: {
+      button: {
         title: ' ',
-        type: 'string',
-        width: '5%',
+        type: 'custom',
+        renderComponent: ButtonViewComponent,
+        onComponentInitFunction(instance) {
+          instance.save.subscribe(row => {
+            alert(`${row.name} saved!`)
+          });
+        }
       },
     },
   };
@@ -95,6 +133,10 @@ export class PatientStatementsComponent implements OnInit {
 
   toggle(checked: boolean) {
     this.checked = checked;
+  }
+  onUserRowSelect(event) {
+    this.selectedRows = event.selected;
+    this.selcetedRowscnt = this.selectedRows.length;
   }
 
   selectTab(event) {
@@ -105,7 +147,7 @@ export class PatientStatementsComponent implements OnInit {
     }
   };
   source: LocalDataSource = new LocalDataSource();
-  constructor(private service: SmartTableData) {
+  constructor(private autoservice: WikipediaService, private service: SmartTableData, private dialogService: NbDialogService,) {
     // const data = this.service.getData();
     const data = [
       {
@@ -123,6 +165,7 @@ export class PatientStatementsComponent implements OnInit {
         ptline: "$1,200.00",
         claim: "$1,200.00",
         exp: "$0.00",
+        button: 'preview',
       },
       {
         patient: "Leanne Graham",
@@ -139,6 +182,7 @@ export class PatientStatementsComponent implements OnInit {
         ptline: "$1,200.00",
         claim: "$1,200.00",
         exp: "$0.00",
+        button: 'preview',
       },
       {
         patient: "Leanne Graham",
@@ -155,12 +199,41 @@ export class PatientStatementsComponent implements OnInit {
         ptline: "$1,200.00",
         claim: "$1,200.00",
         exp: "$0.00",
+        button: 'preview',
       },
     ];
+    this.rowcnt = '1 - ' + data.length + ' OF ' + data.length;
     this.source.load(data);
   }
-
-  ngOnInit() {
+  onSelect(item: any) {
+    this.selectedItem = item;
   }
 
+  search (term: string) {
+    this.autoservice.search(term).subscribe(e => this.wikiItems = e, error => console.log(error));
+  }
+
+  search1 (term: string) {
+    this.autoservice.search(term).subscribe(e => this.wikiItems1 = e, error => console.log(error));
+  }
+  ngOnInit() {
+    var node = document.createElement("LI");
+    var buttonnode = document.createElement("BUTTON");
+    var iconnode = document.createElement("I");
+    iconnode.classList.add("fas");
+    iconnode.classList.add("fa-question");
+    iconnode.classList.add("iconstyle");
+    node.classList.add("video-content"); 
+    buttonnode.classList.add("btn");
+    buttonnode.classList.add("btn-primary");
+    buttonnode.classList.add("video-button");
+    buttonnode.setAttribute("id", "animatiobutton");
+    buttonnode.appendChild(iconnode);
+    node.appendChild(buttonnode);
+    document.getElementById('mytab').firstChild.appendChild(node);
+  }
+
+  showDetail(dialog: TemplateRef<any>) {
+    this.dialogService.open(dialog, { context: 'Statement Note' });
+  }
 }

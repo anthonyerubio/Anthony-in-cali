@@ -5,6 +5,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Billing Summary',
     // icon: 'shopping-cart-outline',
     link: '/pages/billingsummary',
+    icon: 'lock-outline',
     home: true
   },
   {

@@ -218,12 +218,12 @@ export class AccountsReceivableComponent implements OnInit, OnDestroy {
         datasets: [{
           data: [65, 59, 80, 81, 56, 155],
           label: 'Patient',
-          backgroundColor: NbColorHelper.hexToRgbA(colors.primary, 0.3),
+          backgroundColor: NbColorHelper.hexToRgbA(colors.primary, 1.0),
           borderColor: colors.primary,
         }, {
           data: [28, 48, 40, 19, 86, 190],
           label: 'Insurance Company',
-          backgroundColor: NbColorHelper.hexToRgbA(colors.danger, 0.3),
+          backgroundColor: NbColorHelper.hexToRgbA(colors.danger, 1.0),
           borderColor: colors.danger,
         },
         ],

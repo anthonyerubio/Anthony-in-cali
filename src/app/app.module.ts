@@ -6,11 +6,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { AutocompleteModule } from 'ng2-input-autocomplete';
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -20,26 +22,34 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { FilterPipe } from './filter.pipe';
+// import { NbDateFnsDateModule } from '@nebular/date-fns';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FilterPipe],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     AppRoutingModule,
 
     ThemeModule.forRoot(),
-
+    NgMultiSelectDropDownModule.forRoot(),
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
     NbDialogModule.forRoot(),
     NbWindowModule.forRoot(),
     NbToastrModule.forRoot(),
+    AutocompleteModule.forRoot(),
     NbChatModule.forRoot({
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
+    // NbDateFnsDateModule.forRoot({
+    //   parseOptions: { awareOfUnicodeTokens: true },
+    //   formatOptions: { awareOfUnicodeTokens: true },
+    // }),
     CoreModule.forRoot(),
   ],
   bootstrap: [AppComponent],

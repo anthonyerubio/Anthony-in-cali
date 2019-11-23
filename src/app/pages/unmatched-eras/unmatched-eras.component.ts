@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-
+import { WikipediaService } from '../liveclaims/wiki.service';
 import { SmartTableData } from '../../@core/data/smart-table';
 
 @Component({
@@ -9,9 +9,11 @@ import { SmartTableData } from '../../@core/data/smart-table';
   styleUrls: ['./unmatched-eras.component.scss']
 })
 export class UnmatchedErasComponent implements OnInit {
-
+  toDate = new Date();
   selectedItem = '1';
   selectedStatus = '1';
+  wikiItems: any[] = [];
+  config: any = {'class': 'autoinput', 'max': 2, 'placeholder': 'Trace #'};
 
   settings = {
     actions: {
@@ -53,7 +55,7 @@ export class UnmatchedErasComponent implements OnInit {
         width: '10%',
       },
       adjustment: {
-        title: 'adjustment',
+        title: 'Adjustment',
         type: 'string',
         width: '10%',
       },
@@ -76,7 +78,7 @@ export class UnmatchedErasComponent implements OnInit {
   };
 
   source: LocalDataSource = new LocalDataSource();
-  constructor(private service: SmartTableData) {
+  constructor(private service: SmartTableData, private autoservice: WikipediaService,) {
     // const data = this.service.getData();
     const data = [];
     this.source.load(data);
@@ -84,6 +86,14 @@ export class UnmatchedErasComponent implements OnInit {
 
   ngOnInit() {
   }
+  reset() {
+    this.toDate = null;
+  }
+  onSelect(item: any) {
+    this.selectedItem = item;
+  }
 
-
+  search (term: string) {
+    this.autoservice.search(term).subscribe(e => this.wikiItems = e, error => console.log(error));
+  }
 }

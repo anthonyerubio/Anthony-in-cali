@@ -19,10 +19,23 @@ nb-tabset {
     font-size: .8em;
     background-color: rgb(255, 255, 255);
 }
-
+:host ::ng-deep nb-card nb-tabset ul li.tab a span {
+    text-transform: capitalize;
+    font-family: Helvetica, Arial, sans-serif;
+}
+:host ::ng-deep .col-md-12 nb-tabset ul li.tab a span {
+    text-transform: capitalize;
+    font-family: Helvetica, Arial, sans-serif;
+}
 :host ::ng-deep nb-card nb-tabset ul li.tab.disabled a span {
     font-size: 20px;
-    // font-weight: bold;
+    text-transform: capitalize;
     color: #777;
     font-family: Helvetica, Arial, sans-serif;
+}
+:host ::ng-deep button#actionbtn {
+    background-color: #28a745;
+    position: absolute;
+    left: 90%;
+    top: 10px;
 }
